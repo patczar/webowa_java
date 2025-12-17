@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage("pull") {
             steps {
-                git url: 'https://github.com/patczar/webowa_java.git', branch: 'master'
+                git url: 'https://github.com/pczr-alx/webowa_java.git', branch: 'master'
             }
         }
         stage("build") {
@@ -20,6 +20,7 @@ pipeline {
     post {
         success {
             archiveArtifacts 'target/*.war'
+			sh 'cp target/webowa.war /opt/wildfly-38.0.1.Final/standalone/deployments/'
         }
     }
 }
