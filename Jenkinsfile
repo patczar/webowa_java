@@ -1,12 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven 'mejven'
+
+        maven 'maven_3.9'
     }
     stages {
         stage("pull") {
             steps {
-                git url: 'https://github.com/Grzekszosz/webowa_java.git', branch: 'master'
+                git url: 'https://github.com/patczar/webowa_java.git', branch: 'master'
             }
         }
         stage("build") {
@@ -19,7 +20,7 @@ pipeline {
     post {
         success {
             archiveArtifacts 'target/*.war'
-            sh 'cp target/*.war /home/kurs/wildfly-38.0.1.Final/standalone/deployments/'
         }
     }
 }
+
