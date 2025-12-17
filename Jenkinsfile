@@ -19,7 +19,8 @@ pipeline {
     post {
         success {
             archiveArtifacts 'target/*.war'
-			sh 'cp target/webowa.war /opt/wildfly-38.0.1.Final/standalone/deployments/'
+	    sh 'cp target/webowa.war /opt/wildfly-38.0.1.Final/standalone/deployments/'
+            
         }
     }
 }
